@@ -1,0 +1,42 @@
+  #libraries
+import pandas as pd
+import sklearn
+from sklearn.linear_model import LinearRegression,LogisticRegression
+from sklearn.model_selection import train_test_split
+from cleaning_data import DATA
+
+data=DATA
+x=df[['Bedroom','bathroom','House size']]
+y_price=df['Price']
+  
+  #predicting algorithm
+x_train,x_test,y_train,y_test=train_test_split(x,y_price, test_size=0.2,random_state=42)
+model=LogisticRegression()
+model.fit(x_train,y_train)
+model.predict(x_test)
+  
+  #classifying algorithm
+y_deal=df['Expensive']
+x_train_2,x_test_2,y_train_2,y_test_2=train_test_split(x,y_deal, test_size=0.2,random_state=42)
+deal_model=LogisticRegression()
+deal_model.fit(x_train_2,y_train_2)
+deal_model.predict(Y_test_2)
+  
+  #users input
+bed=float(input("BEDROOMS:\n")
+bath=float(input("BATHROOMS:\n")
+size=float(input("HOUSE SIZE"\n)
+inputs=pd.DataFrame([[bed,bath,size]], columns=x.columns)
+  
+  #system
+prediction=model.predict(inputs)
+print(f'The price is {prediction}.0f)
+classification=deal_model.predict(inputs)
+if classification==1:
+  print(f'Cheap!!!, GOOD deal')
+else:
+  print(f'Expensive!!!, BAD deal')
+  
+
+  
+
