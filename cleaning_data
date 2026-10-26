@@ -1,1 +1,34 @@
+import pandas as pd
+
+data=pd.read_csv('nairobi_properties_prices')
+df=pd.DataFrame(data)
+
+#seek out the dirt
+print(df.head())
+print(df.is_null().sum())
+print(df.info())
+print(df.describe())
+print(df.duplicated().sum())
+
+#handle the dirt
+df['Price']=df['Price'].str.replace('ksh','').str.replace(',','')
+df['Price']=df['Price'].str.replace('[^0-9]','',regex=True).astype(float)
+df['House size']=df['House size'].str.replace(m2,'').astype(str)
+df['House size']=df['House size'].str.replace('[0-9]','',regex=True).astype(float)
+
+#creating a new column for classification
+average=df['Price'].median()
+df['Expensive']=(df['Price']>=average).astype(int)
+df=pd.to_numeric(df['Price'],errors=coerce)
+
+#fill the missing values
+df['House size']=df.fillna(df['House size'].median()[0])
+df['Bedroom']=df.fillna(df['Bedroom'].median()[0])
+df['bathroom']=df.filna(df['bathroom'].median()[0])
+
+#change text into int
+df=pd.get_dummies('Location')
+
+DATA=df.head()
+
 
