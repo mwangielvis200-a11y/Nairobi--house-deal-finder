@@ -1,5 +1,7 @@
 # Nairobi--house-deal-finder
+
 Nairobi-house-deal-finder predicts house prices and classifies as a good or bad deal.
+
 #uses 2 ML algorithms in 1 project:
 
 1. *Linear Regression*->predicts the house price in ksh (eg. ksh.230,000)
@@ -8,6 +10,7 @@ Nairobi-house-deal-finder predicts house prices and classifies as a good or bad 
 ##Data set
 
 Nairobi property prices with columns:
+
 Bedrooms, Bathrooms, House size(m2),land size(acres),location, town property, price.
 
 #source:
